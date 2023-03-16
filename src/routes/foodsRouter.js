@@ -1,14 +1,14 @@
 const { Router } = require('express');
-const { getFoods, createFood } = require('../handlers/foodsHandlers');
+const { getFoods, createFood, getFoodById, updateFood } = require('../handlers/foodsHandlers');
 
 
 const foodsRouter = Router();
 
 foodsRouter.get("/", getFoods )
-foodsRouter.get("/:id",)
+foodsRouter.get("/:id", getFoodById)
 
 foodsRouter.post("/", createFood)
-foodsRouter.put("/:id",)
+foodsRouter.put("/:id", updateFood)
 foodsRouter.delete("/:id",)
 
 module.exports = foodsRouter
