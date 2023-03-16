@@ -1,6 +1,6 @@
 const Food = require('../models/Food')
 
-const getFoods = async (req,res) => {
+const getFoods = async (req, res) => {
     try {
         const allFoods = await Food.find({});
         res.status(200).send(allFoods)
