@@ -21,7 +21,7 @@ const getFoodById = async (req, res) => {
         res.status(200).send(foodById)  
     } 
     catch (error) {
-        res.status(400).send("algo no funca")
+        res.status(400).send(error.message)
     }
 }
 
@@ -40,8 +40,15 @@ const createFood = async (req, res) => {
 const updateFood = async (req, res) => {
     const {id} = req.params;
     const {name, price, description, image, category} = req.body
+    const preUpdatedFood = {
+        name,
+        price, 
+        description, 
+        image, 
+        category
+    }
     try {
-        const updatedFood = await Food.updateOne({_id: id}, { $set: { name, price, description, image, category} });
+        const updatedFood = await Food.updateOne({_id: id}, { $set: preUpdatedFood });
         res.status(200).send(updatedFood)
     } 
     catch (error) {
