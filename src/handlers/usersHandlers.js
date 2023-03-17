@@ -31,9 +31,10 @@ const createUsers = async (req, res) => {
 }
 const updateUserById = async (req, res) => {
     const { id } = req.params;
-    const { body } = req.body;
+    const { name, phone, email, password, role, state } = req.body;
+    const updatedUser = {name, phone, email, password, role, state}
     try {
-        const result = await updateById(id, body);
+        const result = await updateById(id, updatedUser);
         res.status(200).json(result)
     } catch (error) {
         res.status(400).json(error.message)
