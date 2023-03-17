@@ -2,10 +2,6 @@ const { mongoose } = require('mongoose');
 const User = require('../models/User');
 
 
-const parseId = (id) => {
-    return mongoose.Types.ObjectId(id)
-}
-
 const createUser = async (name, phone, email, password) => {
     const newUser = new User({ name, phone, email, password })
     await newUser.save();
@@ -17,8 +13,8 @@ const allUsers = async () => {
 }
 
 const searchUsers = async (name) => {
-    const filterUser = await User.find({ name })
-    return filterUser;
+    const filterUser = await User.find()
+    return filterUser.filter(user => user.name.toLowerCase().includes(name.toLowerCase()));
 }
 const userById = async (id) => {
     const filterById = await User.find({ _id: id })
