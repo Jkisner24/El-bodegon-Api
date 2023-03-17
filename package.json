@@ -25,6 +25,7 @@
     "express-fileupload": "^1.4.0",
     "fs-extra": "^11.1.0",
     "mongoose": "^7.0.2",
+    "mongoose-bcrypt": "^1.10.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.21"
   }

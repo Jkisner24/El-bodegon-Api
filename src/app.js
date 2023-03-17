@@ -2,7 +2,8 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
 const foodsRouter = require('./routes/foodsRouter')
-const initBDD = require('./database');
+//const initBDD = require('./database');
+const usersRouter = require('./routes/usersRouter');
 
 const app = express();
 
@@ -14,7 +15,10 @@ app.use(fileUpload({
     tempFileDir: './upload'
 }))
 
+
 app.use('/foods', foodsRouter);
+app.use('/users', usersRouter);
+
 
 
 module.exports = app
