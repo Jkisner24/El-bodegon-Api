@@ -9,6 +9,10 @@ const CategoriesScheme = new mongoose.Schema(
         },
         description: {
             type: String,
+        },
+        status: {
+            type: Boolean,
+            default: true
         }
     }, {
     versionKey: false,
