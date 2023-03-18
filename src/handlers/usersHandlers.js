@@ -35,6 +35,7 @@ const updateUserById = async (req, res) => {
     const updateUser = { name, phone, email, password, role, state };
     try {
         const result = await updateById(id, updateUser);
+
         res.status(200).json(result)
     } catch (error) {
         res.status(400).json(error.message)
