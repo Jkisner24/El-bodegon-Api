@@ -10,7 +10,7 @@ const CategoriesScheme = new mongoose.Schema(
         description: {
             type: String,
         },
-        status: {
+        is_active: {
             type: Boolean,
             default: true
         }
