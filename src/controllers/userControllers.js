@@ -20,8 +20,8 @@ const userById = async (id) => {
     const filterById = await User.find({ _id: id })
     return filterById;
 }
-const updateById = async (id, body) => {
-    const updateUser = await User.updateOne({ _id: id }, { $set: body })
+const updateById = async (id, user) => {
+    const updateUser = await User.updateOne({ _id: id }, { $set: user })
     return updateUser;
 }
 

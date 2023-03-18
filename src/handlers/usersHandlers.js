@@ -32,9 +32,10 @@ const createUsers = async (req, res) => {
 const updateUserById = async (req, res) => {
     const { id } = req.params;
     const { name, phone, email, password, role, state } = req.body;
-    const sendBody = { name, phone, email, password, role, state };
+    const updateUser = { name, phone, email, password, role, state };
     try {
-        const result = await updateById(id, sendBody);
+        const result = await updateById(id, updateUser);
+
         res.status(200).json(result)
     } catch (error) {
         res.status(400).json(error.message)
