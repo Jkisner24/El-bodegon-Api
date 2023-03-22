@@ -10,7 +10,6 @@ const UserScheme = new mongoose.Schema(
         },
         phone: {
             type: String,
-            required: true
         },
         email: {
             type: String,
@@ -19,7 +18,6 @@ const UserScheme = new mongoose.Schema(
         },
         password: {
             type: String,
-            required: true,
             bcrypt: true
         },
         role: {
