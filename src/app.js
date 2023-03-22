@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const categoriesRouter = require('./routes/categories');
 const foodsRouter = require('./routes/foodsRouter')
 const usersRouter = require('./routes/usersRouter');
+const auth0UsersRouter = require('./routes/auth0UsersRouter')
 const cors = require('cors')
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(fileUpload({
 
 app.use('/foods', foodsRouter);
 app.use('/users', usersRouter);
+app.use('/auth0Users', auth0UsersRouter);
 app.use('/categories', categoriesRouter)
 
 
