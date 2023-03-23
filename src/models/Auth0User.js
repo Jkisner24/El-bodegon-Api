@@ -1,33 +1,36 @@
 const mongoose = require('mongoose');
 
-const UserScheme = new mongoose.Schema(
+const Auth0UserScheme = new mongoose.Schema(
     {
-        id: {
-            type: Number
-        },
         name: {
-            type: String
+            type: String,
+            required: true
+        },
+        nickname: {
+            type: String,
+            required: true
         },
         phone: {
             type: String,
+            default: ""
         },
         email: {
             type: String,
             unique: true,
             required: true
         },
-        password: {
+        sub: {
             type: String,
-            required: true,
-            bcrypt: true
+            unique:true,
+            required: true
         },
         role: {
             type: Boolean,
             default: false,
         },
-        state: {
+        isActive: {
             type: Boolean,
-            default: false
+            default: true
         },
 
     }, {
@@ -35,7 +38,5 @@ const UserScheme = new mongoose.Schema(
     timestamps: true
 }
 )
-UserScheme.plugin(require('mongoose-bcrypt'))
 
-//model
-module.exports = mongoose.model('user', UserScheme);
+module.exports = mongoose.model('Auth0User', Auth0UserScheme);
