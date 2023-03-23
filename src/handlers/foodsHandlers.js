@@ -31,14 +31,16 @@ const createFood = async (req, res) => {
     try {
         const {name, price, description, category} = req.body;
         let image;
-        if(req.files.image){
-            const res = await uploadImage(req.files.image.tempFilePath);
-            image = {
-                url: res.secure_url,
-                public_id: res.public_id
-            };
-            await fs.remove(req.files.image.tempFilePath)
-        };
+        if(req.files){
+            if(req.files.image){
+                const res = await uploadImage(req.files.image.tempFilePath);
+                image = {
+                    url: res.secure_url,
+                    public_id: res.public_id
+                };
+                await fs.remove(req.files.image.tempFilePath)
+            }
+        }
 
 
         const newFood = new Food({name, price, description, category, image });

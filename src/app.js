@@ -5,6 +5,8 @@ const categoriesRouter = require('./routes/categories');
 const foodsRouter = require('./routes/foodsRouter')
 const usersRouter = require('./routes/usersRouter');
 const paymentRouter = require('./routes/payment')
+const auth0UsersRouter = require('./routes/auth0UsersRouter')
+
 const cors = require('cors')
 //
 require('dotenv').config();
@@ -18,7 +20,9 @@ mercadopago.configure({
 
 const app = express();
 
-app.use(cors())
+app.use(cors({
+    methods:['GET', 'PUT', 'POST']}
+    ))
 app.use(express.json())
 app.use(morgan('dev'));
 
@@ -32,6 +36,7 @@ app.use('/foods', foodsRouter);
 app.use('/users', usersRouter);
 app.use('/categories', categoriesRouter);
 app.use('/payment', paymentRouter)
+app.use('/auth0Users', auth0UsersRouter);
 
 
 module.exports = app
