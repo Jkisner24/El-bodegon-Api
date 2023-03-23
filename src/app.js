@@ -9,7 +9,9 @@ const cors = require('cors')
 
 const app = express();
 
-app.use(cors())
+app.use(cors({
+    methods:['GET', 'PUT', 'POST']}
+    ))
 app.use(express.json())
 app.use(morgan('dev'));
 
