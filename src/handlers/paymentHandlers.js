@@ -19,6 +19,7 @@ const payment = async (req, res) =>{
     req.body.forEach(item => {
         preference.items.push(
             {
+                id: item.id,
                 title: item.name,
                 currency_id: "ARS",
                 picture_url: item.image,

@@ -1,3 +1,4 @@
+const { ObjectId } = require('bson');
 const mongoose = require('mongoose');
 
 const Auth0UserScheme = new mongoose.Schema(
@@ -32,6 +33,10 @@ const Auth0UserScheme = new mongoose.Schema(
             type: Boolean,
             default: true
         },
+        cart: {
+            type: ObjectId,
+            ref: 'cart'
+        }
 
     }, {
     versionKey: false,

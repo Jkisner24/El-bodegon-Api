@@ -12,6 +12,7 @@ const cors = require('cors')
 require('dotenv').config();
 // SDK de Mercado Pago
 const mercadopago = require("mercadopago");
+const cartRouter = require('./routes/cartRoutes');
 // Agrega credenciales
 mercadopago.configure({
   access_token: process.env.MERCADOPAGO_KEY
@@ -35,7 +36,7 @@ app.use('/users', usersRouter);
 app.use('/categories', categoriesRouter);
 app.use('/payment', paymentRouter)
 app.use('/auth0Users', auth0UsersRouter);
-
+app.use('/cart', cartRouter)
 
 module.exports = app
 

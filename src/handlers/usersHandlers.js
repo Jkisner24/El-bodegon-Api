@@ -41,9 +41,10 @@ const updateUserById = async (req, res) => {
         res.status(400).json(error.message)
     }
 }
+
 module.exports = {
     getUsers,
     createUsers,
     getUserById,
-    updateUserById
+    updateUserById,
 }
