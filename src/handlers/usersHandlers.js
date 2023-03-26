@@ -84,5 +84,5 @@ module.exports = {
     createUsers,
     getUserById,
     updateUserById,
-    // compareLogin
+    compareLogin
 }

@@ -12,5 +12,4 @@ usersRouter.post("/", createUsers);
 usersRouter.put("/:id", updateUserById)
 usersRouter.post("/login", compareLogin)
 
-
 module.exports = usersRouter;
