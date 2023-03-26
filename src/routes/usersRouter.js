@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const { getUsers, createUsers, getUserById, updateUserById, compareLogin, updateUserCart } = require("../handlers/usersHandlers");
+const { getUsers, createUsers, getUserById, updateUserById, compareLogin } = require("../handlers/usersHandlers");
 
 
 
@@ -10,7 +10,6 @@ usersRouter.get("/", getUsers);
 usersRouter.get("/:id", getUserById);
 usersRouter.post("/", createUsers);
 usersRouter.put("/:id", updateUserById)
-usersRouter.put('/cart', updateUserCart)
 usersRouter.post("/login", compareLogin)
 
 

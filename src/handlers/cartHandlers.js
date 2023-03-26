@@ -18,6 +18,7 @@ const getCart = async (req, res) => {
 const updateCart = async (req, res) => {
     const { id } = req.params
     const  cart  = req.body
+    console.log({updatecartid: id});
     try {
         if(id.includes("auth")){
             const auth0User = await Auth0User.findOne({sub: id})
