@@ -20,13 +20,12 @@ const UserScheme = new mongoose.Schema(
         password: {
             type: String,
             required: true,
-            bcrypt: true
         },
         role: {
             type: Boolean,
             default: false,
         },
-        state: {
+        is_active: {
             type: Boolean,
             default: false
         },
@@ -40,7 +39,6 @@ const UserScheme = new mongoose.Schema(
     timestamps: true
 }
 )
-UserScheme.plugin(require('mongoose-bcrypt'))
 
 //model
 module.exports = mongoose.model('user', UserScheme);
