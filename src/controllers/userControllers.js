@@ -1,9 +1,16 @@
 const { mongoose } = require('mongoose');
+const { compare } = require('../helpers/handleEncrypt');
 const User = require('../models/User');
 
 
-const createUser = async (name, phone, email, password) => {
-    const newUser = new User({ name, phone, email, password })
+const createUser = async (name, phone, email, passHash) => {
+    console.log(name, phone, email, passHash)
+    const newUser = new User({
+        name: name,
+        phone: phone,
+        email: email,
+        password: passHash
+    })
     await newUser.save();
     return "new User";
 }
@@ -24,6 +31,5 @@ const updateById = async (id, user) => {
     const updateUser = await User.updateOne({ _id: id }, { $set: user })
     return updateUser;
 }
-
 
 module.exports = { createUser, allUsers, searchUsers, userById, updateById }
