@@ -1,4 +1,5 @@
 const { createUser, allUsers, searchUsers, userById, updateById } = require('../controllers/userControllers');
+const { encrypt, compare } = require('../helpers/handleEncrypt');
 const User = require('../models/User');
 
 const getUsers = async (req, res) => {
@@ -19,11 +20,47 @@ const getUserById = async (req, res) => {
         res.status(400).json(error.message)
     }
 }
+const compareLogin = async (req, res) => {
+    const { email, password } = req.body
+    try {
+        const user = await User.findOne({ email })
+        if (user) {
+            const checkPassword = await compare(password, user.password)
+            if (checkPassword) {
+                res.status(411).json({
+                    error: 'valid email correct password',
+                    user
+                })
+            } else {
+                res.status(409).json({
+                    error: 'Invalid password',
+                    status: 409,
+                    statusText: 'Invalid password'
+                })
+            }
+        } else {
+            res.status(410).json({
+                error: "Invalid email",
+                status: 410,
+                statusText: 'Invalid email'
+            })
+        }
+
+    } catch (error) {
+        res.status(400).json({
+            error: 'error 404',
+            status: "",
+            statusText: ''
+        })
+    }
+}
+
 const createUsers = async (req, res) => {
     const { name, phone, email, password } = req.body;
 
     try {
-        const newUser = await createUser(name, phone, email, password);
+        const passHash = await encrypt(password)
+        const newUser = await createUser(name, phone, email, passHash);
         res.status(200).json(newUser);
     } catch (error) {
         res.status(400).json(error.message)
@@ -47,4 +84,5 @@ module.exports = {
     createUsers,
     getUserById,
     updateUserById,
+    compareLogin
 }
