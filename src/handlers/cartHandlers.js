@@ -21,8 +21,6 @@ const updateCart = async (req, res) => {
     try {
         if(id.includes("auth")){
             const auth0User = await Auth0User.findOne({sub: id})
-            console.log(cart);
-            console.log(req.body);
             if(auth0User.cart){ 
                 const updatedCart = await Cart.updateOne({ owner: id }, { $set: {items: cart} })
                 return res.status(200).send(updatedCart)
