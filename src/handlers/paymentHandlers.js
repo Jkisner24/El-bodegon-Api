@@ -3,12 +3,13 @@ const mercadopago = require("mercadopago");
 
 const payment = async (req, res) =>{
     try {
+        console.log(req.body);
         
     // Crea un objeto de preferencia
     let preference = {
         items: [],
         back_urls: {
-            success: "https://localhost:3001",
+            success: "https://el-bodegon-nuevo-repo.vercel.app/",
             failure: "",
             pending: ""
         },
@@ -34,8 +35,9 @@ const payment = async (req, res) =>{
       mercadopago.preferences
         .create(preference)
         .then((response)=>res.status(200).send({response}))
-        .catch((error)=>res.status(404).send(error.message));
+        .catch((error)=>{console.log(error); res.status(404).send(error.message)});
     } catch (error) {
+        console.log(error);
         res.status(404).send(error.message)
     }
  

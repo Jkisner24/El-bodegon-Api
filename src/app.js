@@ -14,13 +14,25 @@ require('dotenv').config();
 const mercadopago = require("mercadopago");
 const cartRouter = require('./routes/cartRoutes');
 // Agrega credenciales
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 mercadopago.configure({
   access_token: process.env.MERCADOPAGO_KEY
 });
 
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(cookieParser());
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://el-bodegon-nuevo-repo.vercel.app/'); // update to match the domain you will make the request from
+  // res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  next();
+});
 app.use(cors())
 app.use(express.json())
 app.use(morgan('dev'));
