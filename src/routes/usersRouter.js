@@ -8,7 +8,7 @@ const usersRouter = Router();
 
 usersRouter.get("/", getUsers);
 usersRouter.get("/:id", getUserById);
-usersRouter.post("/", createUsers);
+usersRouter.post("/create", createUsers);
 usersRouter.put("/:id", updateUserById)
 usersRouter.post("/login", compareLogin)
 
