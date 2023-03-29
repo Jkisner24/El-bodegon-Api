@@ -2,7 +2,7 @@ const { Router } = require("express");
 const { notificacion } = require("../handlers/notificacionMpHandler");
 
 
-const categoriesRouter = Router();
-categoriesRouter.post("/", notificacion)
+const notificacionRouter = Router();
+notificacionRouter.post("/", notificacion)
 
-module.exports = categoriesRouter;
+module.exports = notificacionRouter;
