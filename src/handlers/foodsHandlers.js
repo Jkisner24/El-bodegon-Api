@@ -56,29 +56,12 @@ const createFood = async (req, res) => {
 const updateFood = async (req, res) => {
     try {
         const {id} = req.params;
-        const {name, price, description, category} = req.body;
-        console.log(req.files);
-        let image;
-        const currentFood = await Food.findById(id);
-        if(req.files){
-            if(req.files.image){
-                await deleteImage(currentFood.image.public_id)
-                const res = await uploadImage(req.files.image.tempFilePath);
-                await fs.remove(req.files.image.tempFilePath)
-                image = {
-                    url: res.secure_url,
-                    public_id: res.public_id
-                };
-            }
-        };
-        const preUpdatedFood = {
-            name,
-            price, 
-            description, 
-            image, 
-            category
-        };
-        const updatedFood = await Food.updateOne({_id: id}, { $set: preUpdatedFood });
+        const {stock, price} = req.body;
+        console.log(id);
+        console.log(stock);
+        console.log(price);
+
+        const updatedFood = await Food.updateOne({_id: id}, { $set: {price, stock} });
         res.status(200).send(updatedFood);
     } 
     catch (error) {
