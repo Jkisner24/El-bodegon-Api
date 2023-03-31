@@ -29,6 +29,9 @@ const foodSchema = new mongoose.Schema({
         default: 0
        
     } ,
+    stock: {
+        type: Number
+    },
     comments:{
         type: Array,
         default: []
