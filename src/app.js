@@ -8,6 +8,7 @@ const paymentRouter = require('./routes/payment')
 const auth0UsersRouter = require('./routes/auth0UsersRouter')
 const notificarRouter = require('./routes/notificarRouter')
 const orderRouter = require('./routes/orderRoutes')
+
 const cors = require('cors')
 //
 require('dotenv').config();
@@ -52,6 +53,7 @@ app.use('/auth0Users', auth0UsersRouter);
 app.use('/cart', cartRouter)
 app.use('/notificar', notificarRouter)
 app.use('/order', orderRouter)
+
 
 module.exports = app
 
