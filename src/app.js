@@ -6,7 +6,7 @@ const foodsRouter = require('./routes/foodsRouter')
 const usersRouter = require('./routes/usersRouter');
 const paymentRouter = require('./routes/payment')
 const auth0UsersRouter = require('./routes/auth0UsersRouter')
-const notificacionRouter = require('./routes/notificacionRouter')
+const notificarRouter = require('./routes/notificarRouter')
 const orderRouter = require('./routes/orderRoutes')
 const cors = require('cors')
 //
@@ -50,7 +50,7 @@ app.use('/categories', categoriesRouter);
 app.use('/payment', paymentRouter)
 app.use('/auth0Users', auth0UsersRouter);
 app.use('/cart', cartRouter)
-app.use('/notificacion', notificacionRouter)
+app.use('/notificar', notificarRouter)
 app.use('/order', orderRouter)
 
 module.exports = app
