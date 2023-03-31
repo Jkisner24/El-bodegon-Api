@@ -1,6 +1,7 @@
 const { createUser, allUsers, searchUsers, userById, updateById } = require('../controllers/userControllers');
 const { encrypt, compare } = require('../helpers/handleEncrypt');
 const User = require('../models/User');
+const sendMail = require('../libs/nodemailer')
 
 const getUsers = async (req, res) => {
     const { name } = req.query;
@@ -61,6 +62,9 @@ const createUsers = async (req, res) => {
     try {
         const passHash = await encrypt(password)
         const newUser = await createUser(name, phone, email, passHash);
+        if(newUser.name){
+            sendMail(email,name)
+        }
         res.status(200).json(newUser);
     } catch (error) {
         res.status(400).json(error.message)
