@@ -11,8 +11,8 @@ const createUser = async (name, phone, email, passHash) => {
         email: email,
         password: passHash
     })
-    await newUser.save();
-    return "new User";
+    
+    return await newUser.save();
 }
 const allUsers = async () => {
     const allBDD = await User.find({});
