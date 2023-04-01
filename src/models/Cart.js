@@ -9,7 +9,8 @@ const CartScheme = new mongoose.Schema(
         },
         owner: {
             type: String,
-            required: true
+            required: true,
+            unique:true
         }
     }, {
     versionKey: false,
