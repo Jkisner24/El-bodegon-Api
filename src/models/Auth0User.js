@@ -3,17 +3,14 @@ const mongoose = require('mongoose');
 
 const Auth0UserScheme = new mongoose.Schema(
     {
+        nickname: {
+            type: String,
+            required: true,
+            unique: true
+        },
         name: {
             type: String,
             required: true
-        },
-        nickname: {
-            type: String,
-            required: true
-        },
-        phone: {
-            type: String,
-            default: ""
         },
         email: {
             type: String,
