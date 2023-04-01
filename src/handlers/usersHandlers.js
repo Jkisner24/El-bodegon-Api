@@ -29,8 +29,8 @@ const compareLogin = async (req, res) => {
         if (user) {
             const checkPassword = await compare(password, user.password)
             if (checkPassword) {
-                res.status(411).json({
-                    error: 'valid email correct password',
+                res.status(200).json({
+                    message: 'valid email correct password',
                     user
                 })
             } else {
