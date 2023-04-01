@@ -23,8 +23,8 @@ const Auth0UserScheme = new mongoose.Schema(
             required: true
         },
         role: {
-            type: Array,
-            default: ["user"],
+            type: Boolean,
+            default: false,
         },
         isActive: {
             type: Boolean,
