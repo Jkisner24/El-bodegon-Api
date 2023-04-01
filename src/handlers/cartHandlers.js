@@ -25,16 +25,15 @@ const updateCart = async (req, res) => {
             if(auth0User.cart){ 
                 const updatedCart = await Cart.updateOne({ owner: id }, { $set: {items: cart} })
                 return res.status(200).send(updatedCart)
-            } else {
-                const newCart =  new Cart({items: cart, owner: id})
-                const savedCart = await newCart.save()
-                auth0User.cart = savedCart
-                await auth0User.save()
-                return res.status(200).send("google") 
             }
         }
         else{
-            //SI EL USUARIO NO ES DE AUTH0... 
+            const user = await User.findById(id)
+            if(user.cart){
+                const updatedCart = await Cart.updateOne({owner: id}, {$set: {items: cart}})
+                console.log({MEACTUALIZO: updatedCart});
+                return res.status(200).json(updatedCart)
+            }
         }
     } catch (error) {
         res.status(400).send(error)
