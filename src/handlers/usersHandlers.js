@@ -1,6 +1,7 @@
 const { createUser, allUsers, searchUsers, userById, updateById } = require('../controllers/userControllers');
 const { encrypt, compare } = require('../helpers/handleEncrypt');
 const User = require('../models/User');
+const Cart = require('../models/Cart')
 const sendMail = require('../libs/nodemailer')
 
 const getUsers = async (req, res) => {
@@ -62,6 +63,13 @@ const createUsers = async (req, res) => {
     try {
         const passHash = await encrypt(password)
         const newUser = await createUser(name, phone, email, passHash);
+
+        const newCart =  new Cart({items: [], owner: newUser._id})
+        const savedCart = await newCart.save()
+
+        newUser.cart = savedCart._id
+        await newUser.save()
+
         if(newUser.name){
             sendMail(email,name)
         }
