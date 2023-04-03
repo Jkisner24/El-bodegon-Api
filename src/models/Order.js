@@ -18,10 +18,15 @@ const OrderScheme = new mongoose.Schema(
         status: {
             type: String,
             default: "pending"
+        },
+        date: {
+            type: Date,
+            default: Date.now
         }
     }, 
     {
         versionKey: false,
+        timestamps: false
     }
 )
 module.exports = mongoose.model('order', OrderScheme);

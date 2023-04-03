@@ -32,7 +32,8 @@ const UserScheme = new mongoose.Schema(
         cart: {
             type: ObjectId,
             ref: 'cart'
-        }
+        },
+        orders: [{ type: ObjectId, ref: 'order' }]
 
     }, {
     versionKey: false,

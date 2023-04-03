@@ -11,7 +11,7 @@ const getAllOrders = async(req, res) => {
 
 const getOrdersByUser = async (req, res)=> {
     try {
-        const {id} = req.body
+        const {id} = req.params
         const userOrders = await Order.find({owner: id})
         res.status(200).json(userOrders)
     } catch (error) {
@@ -30,8 +30,19 @@ const postOrder= async (req, res) => {
     }
 }
 
+const orderDelivered = async (req, res) => {
+    const {id} = req.params
+    try {
+        const orderDelivered = await Order.updateOne({_id: id}, {$set: {status: "entregado"}})
+        res.status(200).json(orderDelivered)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 module.exports = {
     getAllOrders,
     getOrdersByUser,
-    postOrder
+    postOrder,
+    orderDelivered
 }
