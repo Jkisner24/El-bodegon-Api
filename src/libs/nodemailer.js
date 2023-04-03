@@ -15,7 +15,7 @@ sendMail = async ( toMail, name ) => {
         }
         const mail = {
             from: 'elbodegondetony2023@gmail.com',
-            to: 'lvalcke88@gmail.com',
+            to: toMail,
             subject: 'Confirmacion de registro El bodegon de Tony',
             html: 
             `<div style= "background-color:black; border-radius:20px; padding:50px; text-align:center; color: white;" >
