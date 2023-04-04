@@ -59,7 +59,7 @@ const compareLogin = async (req, res) => {
 
 const createUsers = async (req, res) => {
     const { name, phone, email, password } = req.body;
-
+ 
     try {
         const passHash = await encrypt(password)
         const newUser = await createUser(name, phone, email, passHash);
@@ -71,7 +71,7 @@ const createUsers = async (req, res) => {
         await newUser.save()
 
         if(newUser.name){
-            sendMail(email,name)
+           await sendMail(email,name)
         }
         res.status(200).json(newUser);
     } catch (error) {
