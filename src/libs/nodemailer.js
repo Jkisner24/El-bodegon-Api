@@ -19,7 +19,8 @@ sendMail = async ( toMail, name ) => {
             subject: 'Confirmacion de registro El bodegon de Tony',
             html: 
             `<div style= "background-color:black; border-radius:20px; padding:50px; text-align:center; color: white;" >
-                <div style= "border: 10px solid rgb(235, 14, 14); border-radius: 20px; padding:50px;" >
+                <div style= "border: 2px solid white; border-radius: 20px; padding:50px;" >
+                <img src="https://res.cloudinary.com/dalhatgbg/image/upload/v1680593842/El%20bodegon%20-%20Logo/El_Bodegon_de_Tony_rorqsh.png" alt=":C" style="width:100%; max-width: 150px; height:auto; "/>
                     <h1>Hola, ${name}!!!</h1>
                     <h2 style= "color: white;" >Bienvenido a "El Bodegon De Tony"</h2>
                     <h2 style= "color: white;" >Es un placer para nosotros darte la bienvenida</h2>
