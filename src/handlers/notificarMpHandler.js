@@ -11,10 +11,9 @@ const notificar = async (req, res) =>{
         if(!cart[0].price) throw new Error('Unexpected error')
         let amount = 0
         cart.forEach(item => {
-            amount += item.price + item.quantity
+            amount += item.price * item.quantity
         });
         console.log(amount); 
-        
         if(sub){
             const newOrder =  await new Order({items: cart, owner: id, amount})
             newOrder.save()    

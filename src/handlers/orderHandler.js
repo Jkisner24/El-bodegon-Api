@@ -19,16 +19,16 @@ const getOrdersByUser = async (req, res)=> {
     }
 }
 
-const postOrder= async (req, res) => {
-    try {
-        const {items, amount, userId, date} = req.body
-        const newOrder = new Order({ items, amount, userId, date })
-        await newOrder.save();
-        res.status(200).json(newOrder)
-    } catch (error) {
-        console.log(error);
-    }
-}
+// const postOrder= async (req, res) => {
+//     try {
+//         const {items, amount, userId, date} = req.body
+//         const newOrder = new Order({ items, amount, userId, date })
+//         await newOrder.save();
+//         res.status(200).json(newOrder)
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
 const orderDelivered = async (req, res) => {
     const {id} = req.params
@@ -43,6 +43,6 @@ const orderDelivered = async (req, res) => {
 module.exports = {
     getAllOrders,
     getOrdersByUser,
-    postOrder,
+    // postOrder,
     orderDelivered
 }
