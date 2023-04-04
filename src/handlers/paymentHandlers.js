@@ -1,21 +1,30 @@
 const mercadopago = require("mercadopago");
 
 const payment = async (req, res) =>{
+    const {cart, email, id} = req.body
     // Crea un objeto de preferencia
+    console.log(email);
+    console.log(cart);
+    console.log(id);
     let preference = {
         items: [],
         
         back_urls: {
-            success: "http://localhost:3001/cart",
-            failure: "",
-            pending: ""
+            success: "http://localhost:3000/",
+            failure: "http://localhost:3000/",
+            pending: "http://localhost:3000/"
         },
-        //auto_return: "approved",
+        auto_return: "approved",
         //binary_mode: true,
-        notification_url: 'https://aca7-2800-560-39-154b-71a6-4deb-dd04-cff5.sa.ngrok.io/notificar',
+        // notification_url: 'https://el-bodegon-api-wine.vercel.app/notificar',
+        // payer: {
+        //     email,
+        //     id
+        // },
+        // sandbox_mode : true
       };
 
-      req.body.forEach(item => {
+      cart.forEach(item => {
           preference.items.push(
               {
                   id: item.id,

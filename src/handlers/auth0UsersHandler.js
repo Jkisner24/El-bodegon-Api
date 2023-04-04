@@ -1,6 +1,8 @@
 const { createAuth0User } = require('../controllers/auth0UsersControllers')
 const Auth0User = require('../models/Auth0User')
 const Cart = require('../models/Cart')
+const User = require('../models/User')
+
 const getAuth0Users = async (req, res) => {
     try {
         const auth0users = await Auth0User.find()
@@ -39,8 +41,44 @@ const createAuth0Users = async (req, res) => {
     }
 }
 
+const banAuth0User = async (req, res) => {
+    const {id} = req.params;
+    console.log(id);
+    try {
+        if(id.includes("auth")){           
+            const bannedAuth0User = await Auth0User.updateOne({sub: id}, {$set: {isActive: false}})
+            res.status(200).json(bannedAuth0User)           
+        }
+        else{
+            const bannedUser = await User.updateOne({_id: id}, {$set: {is_active: false}})
+            res.status(200).json(bannedUser)
+        }
+    } catch (error) {
+       console.log(error); 
+    }
+}
+
+const unbanAuth0User = async (req, res) => {
+    const {id} = req.params;
+    console.log(id);
+    try {
+        if(id.includes("auth")){           
+            const unbannedAuth0User = await Auth0User.updateOne({sub: id}, {$set: {isActive: true}})
+            res.status(200).json(unbannedAuth0User)           
+        }
+        else{
+            const unbannedUser = await User.updateOne({_id: id}, {$set: {is_active: true}})
+            res.status(200).json(unbannedUser)
+        }
+    } catch (error) {
+       console.log(error); 
+    }
+}
+
 module.exports = {
     getAuth0Users,
     getAuth0UserBySub,
-    createAuth0Users
+    createAuth0Users,
+    banAuth0User,
+    unbanAuth0User
 }
