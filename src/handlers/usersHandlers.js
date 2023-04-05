@@ -2,7 +2,7 @@ const { createUser, allUsers, searchUsers, userById, updateById } = require('../
 const { encrypt, compare } = require('../helpers/handleEncrypt');
 const User = require('../models/User');
 const Cart = require('../models/Cart')
-const sendMail = require('../libs/nodemailer')
+const {sendMail} = require('../libs/nodemailer')
 
 const getUsers = async (req, res) => {
     const { name } = req.query;
@@ -72,6 +72,7 @@ const createUsers = async (req, res) => {
 
         if(newUser.name){
            await sendMail(email,name)
+           console.log("SE MANDO EL MAIL");
         }
         res.status(200).json(newUser);
     } catch (error) {
