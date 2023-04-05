@@ -6,8 +6,8 @@ const sendMail = async ( toMail, name ) => {
             host : 'smtp.gmail.com',
             port : 587,
             auth : {
-                user: 'elbodegondetony2023@gmail.com',
-                pass: 'dpetxobcnlfvguck'
+                user: 'lvalcke88@gmail.com',
+                pass: 'zufbzfgeamtirhxo'
             },
             tls: {
               rejectUnauthorized: false
@@ -25,7 +25,7 @@ const sendMail = async ( toMail, name ) => {
                     <h2 style= "color: white;" >Bienvenido a "El Bodegon De Tony"</h2>
                     <h2 style= "color: white;" >Es un placer para nosotros darte la bienvenida</h2>
                     <h2 style= "color: white;" >y ofrecerte los mejores platos a los mejores precios</h2>
-                    <a style= "color: rgb(235, 158, 14); margin: 100px;" href="https://el-bodegon-nuevo-repo.vercel.app/">Volver a la pagina principal</a>
+                    <a style= "color: rgb(235, 158, 14); margin: 100px;" href="https://el-bodegon-cliente-local.vercel.app/">Volver a la pagina principal</a>
                 </div>
              </div>`
         }
@@ -63,7 +63,7 @@ const sendPurchaseMail = async ( toMail, name ) => {
                     <h1>Hola, ${name}!!!</h1>
                     <h2 style= "color: white;" >Tu compra fue exitosa!!!</h2>
                     <h2 style= "color: white;" >Fue un placer atenderte...</h2>
-                    <a style= "color: rgb(235, 158, 14); margin: 100px;" href="https://el-bodegon-nuevo-repo.vercel.app/">Volver a la pagina principal</a>
+                    <a style= "color: rgb(235, 158, 14); margin: 100px;" href="https://el-bodegon-cliente-local.vercel.app/">Volver a la pagina principal</a>
                 </div>
              </div>`
         }
