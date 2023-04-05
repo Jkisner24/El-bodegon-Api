@@ -10,18 +10,11 @@ const payment = async (req, res) =>{
         items: [],
         
         back_urls: {
-            success: "http://localhost:3000/",
-            failure: "http://localhost:3000/",
-            pending: "http://localhost:3000/"
+            success: "https://el-bodegon-cliente-local.vercel.app/",
+            failure: "https://el-bodegon-cliente-local.vercel.app/",
+            pending: "https://el-bodegon-cliente-local.vercel.app/"
         },
         auto_return: "approved",
-        //binary_mode: true,
-        // notification_url: 'https://el-bodegon-api-wine.vercel.app/notificar',
-        // payer: {
-        //     email,
-        //     id
-        // },
-        // sandbox_mode : true
       };
 
       cart.forEach(item => {
